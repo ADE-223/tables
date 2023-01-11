@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table</title>
+        <style>
+            td,th {border: double 6px;}
+            th {background: lightblue;}
+            tr [data-href] {
+                cursor: pointer;
+            }
+
+            .Delete-Button{
+                width: 20%;
+                background-color: #4c3030c0;
+                color: rgb(188, 188, 238);
+                padding: 10px;
+                border-radius: 7px;
+                margin: 5px;
+                font-size: 15px;
+                font-weight: 300;
+            }
+            .Delete-Button:hover {background-color: #364772;}
+            .Delete-Button:active {transform: translateY(2px);}
+        </style>
+    </head> 
+    <body>
+        <h1>Widely used programming languages</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Rows</th> 
+                    <th>Names</th> 
+                    <th>First appeared</th> 
+                    <th>paradigm</th> 
+                    <th>link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-href="https://en.wikipedia.org/wiki/C_(programming_language)">
+                    <th>
+                        Row 1
+                    </th>
+                    <td>
+                        C
+                    </td>
+                    <td>
+                        1972
+                    </td>
+                    <td>
+                        imperative
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/C_(programming_language)"> Click Me</a>
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/Java_(programming_language)">
+                    <th>
+                        Row 2
+                    </th>
+                    <td>
+                        Java
+                    </td>
+                    <td>
+                        1995
+                    </td>
+                    <td>
+                       Object-Oriented
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Java_(programming_language)"> Click Me</a>
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/C%2B%2B">
+                    <th>
+                        Row 3
+                    </th>
+                    <td>
+                        C++
+                    </td>
+                    <td>
+                        1983
+                    </td>
+                    <td>
+                        Object-Oriented
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/C%2B%2B"> Click Me</a>  
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/Ruby_(programming_language)">
+                    <th>
+                        Row 4
+                    </th>
+                    <td>
+                        Ruby
+                    </td>
+                    <td>
+                        1995
+                    </td>
+                    <td>
+                        Object-Oriented,Dynamic
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)"> Click Me</a>
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/Python_(programming_language)">
+                    <th>
+                        Row 5
+                    </th>
+                    <td>
+                      Python 
+                    </td>
+                    <td>
+                        1991
+                    </td>
+                    <td>
+                        Object-Oriented,Dynamic
+                    </td>
+                    <td>
+                      <a href="https://en.wikipedia.org/wiki/Python_(programming_language)"> Click Me</a>  
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/JavaScript">
+                    <th>
+                        Row 6
+                    </th>
+                    <td>
+                        Javascript
+                    </td>
+                    <td>
+                        1995
+                    </td>
+                    <td>
+                        Object-Oriented,scripting
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/JavaScript"> Click Me</a>
+                    </td>
+                </tr>
+                <tr data-href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">
+                    <th>
+                        Row 7
+                    </th>
+                    <td>
+                        Haskell
+                    </td>
+                    <td>
+                        1991
+                    </td>
+                    <td>
+                        Functional
+                    </td>
+                    <td>
+                        <a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)"> Click me</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <span>
+            <div class="Delete-Button">Delete row
+            </div>
+        </span>
+
+        <script>
+         document.addEventListener("DOMContentLoaded", () => {
+                const Rows = document.querySelectorAll("tr[data-href]");
+                
+                Rows.forEach(Rows => {
+                    Rows.addEventListener("click", () => {
+                        window.location.href = Rows.dataset.href;
+                    });
+                });
+            });
+
+        </script>
+        <script>
+            const tbody = document.querySelector("tbody");
+            const table = document.querySelector("table");
+            function onAddWebsite(e) {
+                e.preventDefault ();
+                const Rows = document.getElementById("Rows").value;
+                const Names = document.getElementById("Names").value;
+                const Firstappeared = document.getElementById("First appeared").value;
+                const paradigm = document.getElementById("paradigm").value;
+                const link = document.getElementById("link").value;
+                tbody.innerHTML += `
+                   <tr>
+                      <td>${Rows}</td>
+                      <td>${Names}</td>
+                      <td>${Firstappeared}</td>
+                      <td>${paradigm}</td>
+                      <td>${link}</td>
+                      <td><button class= </td
+                    </tr>
+
+                
+                `;
+            }
+
+            function onDeleteRow(e) {
+                if (!e.target.classList.contains("Delete-Button")) {
+                    return;
+                }
+
+                const button = e.target;
+                button.closest("tr").remove();
+            }
+
+            table.addEventListener("Click", onDeleteRow);
+        </script>
+    </body>
+</html>
